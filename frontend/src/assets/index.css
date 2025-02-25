@@ -1,3 +1,36 @@
 .fade-in {
     animation : fadeIn  1s ease-in
 }
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px #6a11cb;
+    }
+    50% {
+        box-shadow: 0 0 20px #55d117;
+    }
+    100% {
+        box-shadow: 0 0 10px #6a11cb;
+    }
+}
+
+.pulse {
+    animation: glow 2s infinite;
+}
+
+.bounce-in {
+    animation: bounce-in 0.8s ease-out;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}

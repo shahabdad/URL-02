@@ -8,13 +8,12 @@ async function dbConnection(){
         await mongoose.connect(dburl,{
             useNewUrlParser:true,
             // useUniifiedTopology:true,
-            useUnifiedTopology: true, // Correct spelling
+            useUnifiedTopology: true, 
 
         });
         console.log('Connected to MongDB with  Mongoose');
 
     }catch(err){
-
             console.error('Error connecting to MongoDB:',err)
             throw err;
         

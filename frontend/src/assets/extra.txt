@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './URLShortener.css';
 
@@ -7,8 +7,8 @@ const URLShortener = () => {
     const [shortUrl, setShortUrl] = useState("");
     const [copied, setCopied] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState('picture.jpg');
-    const inputRef   = useRef(null);
-    const shortUrlRef  = useRef(null);
+    const inputRef = useRef(null); // useRef for input field
+    const shortUrlRef = useRef(null); // useRef for shortened URL
 
     useEffect(() => {
         const images = ['picture.jpg', 'profile_picture_full_stack.jpg', 'picture.jpg'];
@@ -23,7 +23,7 @@ const URLShortener = () => {
     const handleShorten = async () => {
         if (url.trim() === "") {
             alert("Please enter a valid URL!");
-            inputRef.current.focus();
+            inputRef.current.focus(); // Focus on input if it's empty
             return;
         }
         try {
@@ -37,9 +37,8 @@ const URLShortener = () => {
                 setShortUrl(`http://localhost:9000/u/${data.token}`);
                 setCopied(false);
                 setTimeout(() => {
-                    shortUrlRef.current?.scrollIntoView({behavior:'smooth'});
-               },300);  
-               
+                    shortUrlRef.current?.scrollIntoView({ behavior: 'smooth' }); // Scroll to short URL
+                }, 300);
             } else {
                 alert(data.message || "Error generating short URL");
             }
@@ -102,7 +101,7 @@ const URLShortener = () => {
                         className="form-control"
                         placeholder="Paste your URL here"
                         value={url}
-                        ref={inputRef}
+                        ref={inputRef} // Reference input field
                         onChange={(e) => setUrl(e.target.value)}
                         style={{
                             borderRadius: '8px 0 0 8px',
@@ -125,7 +124,7 @@ const URLShortener = () => {
                     </motion.button>
                 </div>
                 {shortUrl && (
-                    <div  ref={shortUrlRef}    className="text-center mt-4 bounce-in">
+                    <div ref={shortUrlRef} className="text-center mt-4 bounce-in">
                         <p
                             className="text-success fw-bold mb-2"
                             style={{ fontSize: '1rem' }}
